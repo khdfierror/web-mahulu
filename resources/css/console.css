@@ -1,0 +1,67 @@
+pre.console {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    border-radius: 0.5rem;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+pre.console {
+    /* background-color: rgba(17, 24, 39, var(--tw-bg-opacity)); */
+    @apply bg-brand-dark/90;
+}
+
+pre.console,
+pre.console-light {
+    clear: both;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+        monospace;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    line-height: 28px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    word-break: normal;
+}
+
+pre.console-light {
+    border-radius: 0.5rem;
+}
+
+pre.console-light code,
+pre.console code {
+    -webkit-overflow-scrolling: touch;
+    background: 0 0;
+    display: block;
+    line-height: 1.75;
+    max-width: 100%;
+    min-width: 100px;
+    overflow-x: auto;
+    padding: 15px 20px;
+    white-space: pre;
+}
+
+pre.console-light code.slim,
+pre.console code.slim {
+    padding: 0.375rem 0.5rem;
+}
+
+pre.console-light code.wrap,
+pre.console code.wrap {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+pre.console-light code::-moz-selection,
+pre.console code::-moz-selection {
+    --tw-bg-opacity: 1;
+    @apply bg-brand-secondary/20;
+}
+
+pre.console-light code::selection,
+pre.console code::selection {
+    --tw-bg-opacity: 1;
+    @apply bg-brand-secondary/20;
+}

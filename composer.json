@@ -6,10 +6,28 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
+        "kedeka/inertia-admin": "dev-main",
+        "kedeka/inertia-blog": "dev-main",
+        "kedeka/inertia-contact": "dev-main",
+        "kedeka/inertia-navigation": "dev-main",
+        "kedeka/inertia-news-flash": "dev-main",
+        "kedeka/inertia-page": "dev-main",
+        "kedeka/inertia-setting": "dev-main",
+        "kedeka/inertia-slider": "dev-main",
+        "kedeka/inertia-survey": "dev-main",
+        "kedeka/inertia-visitor": "dev-main",
+        "kedeka/visitor": "dev-main",
+        "kedeka/whatsapp-laravel": "dev-main",
+        "kedeka/whatsapp-otp": "dev-main",
+        "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^9.19",
+        "laravel/jetstream": "^2.12",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-permission": "^5.5",
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -47,6 +65,14 @@
             "@php artisan key:generate --ansi"
         ]
     },
+
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.kedeka.com/"
+        }
+    ],
+   
     "extra": {
         "laravel": {
             "dont-discover": []

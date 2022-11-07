@@ -1,0 +1,12 @@
+@import './buttons.css';
+@import './console.css';
+@import './dropdown.css';
+@import './filter.css';
+@import './fonts.css';
+@import './form.css';
+@import './table.css';
+@import './fade.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

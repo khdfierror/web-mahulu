@@ -1,0 +1,59 @@
+.btn-paginate {
+    @apply font-medium
+    border border-gray-300 shadow-sm rounded-md text-gray-700 bg-white
+    hover:bg-gray-50
+    focus:outline-none
+    focus:ring-2
+    focus:ring-offset-2
+    focus:ring-brand-primary
+    transition
+    dark:bg-brand-secondary/20
+    dark:text-white/80
+    dark:border-brand-secondary/10
+    dark:ring-offset-brand-dark;
+}
+.btn-paginate.disabled {
+    @apply select-none bg-gray-100 text-gray-300 border-gray-200 shadow-none
+        dark:bg-brand-secondary/50
+        dark:border-brand-secondary/40
+        dark:text-white/30;
+}
+.btn-paginate.active {
+    @apply select-none bg-gray-100 text-gray-300 border-gray-200 shadow-none;
+}
+
+.btn-primary {
+    @apply bg-brand-primary;
+}
+
+.btn-secondary {
+    --tw-border-opacity: 1;
+    --tw-bg-opacity: 1;
+    --tw-gradient-from: rgba(229, 231, 235, 0.15);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(229, 231, 235, 0));
+    --tw-gradient-to: rgba(229, 231, 235, 0.4);
+    --tw-text-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+    border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+    border-width: 1px;
+    color: rgba(17, 24, 39, var(--tw-text-opacity));
+
+    @apply dark:bg-brand-secondary/20
+        dark:border-brand-secondary/30
+        dark:text-white
+        dark:hover:bg-brand-secondary/30
+        dark:bg-none;
+}
+
+.btn-primary,
+.btn-secondary {
+    align-items: center;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    font-size: 0.875rem;
+    font-weight: 500;
+    justify-content: center;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.875rem;
+}

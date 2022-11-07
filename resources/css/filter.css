@@ -1,0 +1,77 @@
+.filter-input {
+    @apply w-full
+        !text-sm
+        text-brand-dark
+        placeholder-brand-secondary
+        bg-white
+        !rounded-xl
+        appearance-none
+        ring-1
+        outline-none
+        border-none
+        ring-brand-secondary/[0.15]
+
+        focus:border-brand-secondary
+        focus:placeholder-brand-secondary/60
+        focus:ring-brand-secondary/50
+        focus:ring-1
+        focus:outline-none
+
+        dark:bg-brand-secondary/20
+        dark:placeholder-slate-600
+        dark:ring-brand-secondary/30
+        dark:focus:placeholder-slate-700
+        dark:focus:ring-brand-primary
+        dark:text-white/80;
+}
+
+.filter-input-in-group {
+    @apply w-full
+        text-sm
+        text-brand-dark
+        placeholder-brand-secondary
+        bg-white
+        rounded-lg
+        rounded-r-none
+        appearance-none
+        ring-1
+        outline-none
+        border-none
+        ring-brand-secondary/[0.15]
+
+        focus:border-brand-secondary
+        focus:placeholder-brand-secondary/60
+        focus:ring-brand-secondary/50
+        focus:ring-1
+        focus:outline-none
+
+        dark:bg-brand-secondary/20
+        dark:placeholder-slate-600
+        dark:ring-brand-secondary/30
+        dark:focus:placeholder-slate-700
+        dark:focus:ring-brand-primary
+        dark:text-white/80;
+}
+
+.filter-button-select {
+    @apply flex
+    items-center
+    justify-between
+    px-3
+    py-2
+    text-sm
+    bg-white
+    rounded-lg
+    appearance-none
+    ring-1
+    outline-none
+    border-none
+    ring-brand-secondary/[0.15]
+
+    focus:border-brand-secondary
+    focus:ring-brand-secondary/50
+    focus:ring-1
+    focus:outline-none;
+
+    @apply dark:bg-brand-secondary/20 dark:ring-brand-secondary/20 dark:border-brand-secondary/30 dark:backdrop-blur-sm;
+}

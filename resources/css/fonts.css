@@ -1,0 +1,30 @@
+@layer base {
+    @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('../fonts/Poppins-Regular.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('../fonts/Poppins-Medium.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('../fonts/Poppins-Semibold.otf') format('opentype');
+    }
+    @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url('../fonts/Poppins-Bold.otf') format('opentype');
+    }
+}
