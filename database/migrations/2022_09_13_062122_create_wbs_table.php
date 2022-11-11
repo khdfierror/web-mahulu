@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('wbs_kategori', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->string('nama')->nullable();
             $table->timestamps();
         });
 
         Schema::create('wbs_pelapor', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->string('nama')->nullable();
             $table->string('nomor_identitas')->nullable(); // nip / nik
             $table->string('whatsapp')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
 
         Schema::create('wbs_laporan', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->foreignId('kategori_id')->nullable()->cascadeOnDelete();
             $table->foreignId('pelapor_id')->nullable()->cascadeOnDelete();
             $table->text('what')->nullable();

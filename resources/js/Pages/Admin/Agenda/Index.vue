@@ -1,11 +1,11 @@
 <template>
-    <app-layout title="Permit Category" menu="permit-categories">
+    <app-layout title="Agenda" menu="agenda">
         <template #header>
             <div>
                 <div class="flex items-center">
                     <div class="flex-1">
                         <h2 class="text-2xl font-medium text-brand-dark dark:text-white">
-                            Permit Category
+                            Agenda
                         </h2>
                     </div>
                     <div class="inline-flex items-center">
@@ -42,7 +42,7 @@
                                             >
                                                 <icon-tabler-settings
                                                     class="w-5 h-5 mr-2 text-brand-secondary group-hover:text-brand-primary"
-                                                />Setting Category
+                                                />Setting Agenda
                                             </button>
                                         </MenuItem>
                                     </div>
@@ -59,10 +59,10 @@
                         <ButtonSecondary
                             size="md"
                             as="link"
-                            :href="route('admin.permit-categories.create')"
+                            :href="route('admin.agenda.create')"
                             class="text-sm"
                         >
-                            <icon-tabler-edit class="w-5 h-5 mr-2 text-blue-500" />Create Category
+                            <icon-tabler-edit class="w-5 h-5 mr-2 text-blue-500" />Create Agenda
                         </ButtonSecondary>
                     </div>
                 </div>
@@ -84,7 +84,25 @@
                                     scope="col"
                                     class="sticky top-0 z-10 border-b border-gray-100 dark:border-brand-secondary/20 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-normal text-brand-secondary dark:text-slate-400 sm:pl-6 lg:pl-8"
                                 >
-                                    Name
+                                    Judul Kegiatan
+                                </th>
+                                <th
+                                    scope="col"
+                                    class="sticky top-0 z-10 hidden border-b border-gray-100 dark:border-brand-secondary/20 bg-opacity-75 px-3 py-3.5 text-left text-sm font-normal text-brand-secondary dark:text-slate-400 sm:table-cell"
+                                >
+                                    Tanggal Kegiatan
+                                </th>
+                                <th
+                                    scope="col"
+                                    class="sticky top-0 z-10 hidden border-b border-gray-100 dark:border-brand-secondary/20 bg-opacity-75 px-3 py-3.5 text-left text-sm font-normal text-brand-secondary dark:text-slate-400 sm:table-cell"
+                                >
+                                    Tempat
+                                </th>
+                                <th
+                                    scope="col"
+                                    class="sticky top-0 z-10 hidden border-b border-gray-100 dark:border-brand-secondary/20 bg-opacity-75 px-3 py-3.5 text-left text-sm font-normal text-brand-secondary dark:text-slate-400 sm:table-cell"
+                                >
+                                    Peserta
                                 </th>
                                 <th
                                     scope="col"
@@ -101,7 +119,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-if="!category.data?.length">
+                            <tr v-if="!agenda.data?.length">
                                 <td
                                     colspan="4"
                                     class="py-6 pl-4 pr-3 text-sm text-center text-gray-300 border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:pl-6 lg:pl-8"
@@ -109,7 +127,7 @@
                                     No data
                                 </td>
                             </tr>
-                            <tr v-for="item in category.data">
+                            <tr v-for="item in agenda.data">
                                 <td
                                     :class="[
                                         'py-2 pl-4 pr-3 text-sm font-medium border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:pl-6 lg:pl-8',
@@ -118,7 +136,7 @@
                                             : 'text-brand-dark dark:text-white',
                                     ]"
                                 >
-                                    <div class="flex">{{ item.name }}</div>
+                                    <div class="flex">{{ item.title }}</div>
                                     <div
                                         class="text-xs italic text-gray-300"
                                         v-if="item.deleted_at"
@@ -138,23 +156,53 @@
                                             : 'text-brand-secondary dark:text-brand-secondary',
                                     ]"
                                 >
+                                    {{ item.date?.short }}
+                                </td>
+                                <td
+                                    :class="[
+                                        'hidden px-3 py-2 text-sm border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:table-cell',
+                                        item.deleted_at
+                                            ? 'italic text-gray-400'
+                                            : 'text-brand-secondary dark:text-brand-secondary',
+                                    ]"
+                                >
+                                    {{ item.location }}
+                                </td>
+                                <td
+                                    :class="[
+                                        'hidden px-3 py-2 text-sm border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:table-cell',
+                                        item.deleted_at
+                                            ? 'italic text-gray-400'
+                                            : 'text-brand-secondary dark:text-brand-secondary',
+                                    ]"
+                                >
+                                    {{ item.participant }}
+                                </td>
+                                <td
+                                    :class="[
+                                        'hidden px-3 py-2 text-sm border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:table-cell',
+                                        item.deleted_at
+                                            ? 'italic text-gray-400'
+                                            : 'text-brand-secondary/50 dark:text-brand-secondary',
+                                    ]"
+                                >
                                     {{ item.updated_at?.short }}
                                 </td>
                                 <td
                                     class="relative py-2 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-100 dark:border-brand-secondary/20 whitespace-nowrap sm:pr-6 lg:pr-8"
                                 >
                                     <ActionTable
-                                        :edit-link="
-                                            route('admin.permit-categories.edit', {
-                                                category: item.id,
+                                    :edit-link="
+                                            route('admin.agenda.edit', {
+                                                agenda: item.id,
                                             })
                                         "
                                         :delete-link="!item.deleted_at"
-                                        @delete="() => (categoryBeingDeleted = item)"
+                                        @delete="() => (postBeingDeleted = item)"
                                         :restore-link="
                                             item.deleted_at
-                                                ? route('admin.permit-categories.restore', {
-                                                      category: item.id,
+                                                ? route('agenda.restore', {
+                                                      agenda: item.id,
                                                   })
                                                 : null
                                         "
@@ -168,28 +216,28 @@
             <Pagination
                 size="md"
                 :params="filters"
-                :links="category?.links"
-                :prev="category?.prev"
-                :next="category?.next"
-                :only="['category', 'filters', 'inertiajs']"
+                :links="agenda?.links"
+                :prev="agenda?.prev"
+                :next="agenda?.next"
+                :only="['agenda', 'filters', 'inertiajs']"
             />
         </div>
         <jet-confirmation-modal
-            :show="categoryBeingDeleted !== null"
-            @close="categoryBeingDeleted = null"
+            :show="agendaBeingDeleted !== null"
+            @close="agendaBeingDeleted = null"
         >
-            <template #title>Delete Category {{ categoryBeingDeleted?.title }}</template>
+            <template #title>Delete Agenda {{ agendaBeingDeleted?.title }}</template>
 
-            <template #content>Are you sure you would like to delete this category?</template>
+            <template #content>Are you sure you would like to delete this agenda?</template>
 
             <template #footer>
-                <ButtonWhite @click="categoryBeingDeleted = null">Cancel</ButtonWhite>
+                <ButtonWhite @click="agendaBeingDeleted = null">Cancel</ButtonWhite>
 
                 <ButtonDanger
                     class="ml-3"
-                    @click="deleteCategory"
-                    :class="{ 'opacity-25': deleteCategoryForm.processing }"
-                    :disabled="deleteCategoryForm.processing"
+                    @click="deleteAgenda"
+                    :class="{ 'opacity-25': deleteAgendaForm.processing }"
+                    :disabled="deleteAgendaForm.processing"
                     >Delete</ButtonDanger
                 >
             </template>
@@ -218,26 +266,26 @@ import axios from 'axios';
 
 const tenant = usePage().props.value.tenant;
 const props = defineProps({
-    category: Object,
+    agenda: Object,
     filters: [Array, Object],
     params: [Array, Object],
 });
 
 const dateFormat = (date) => dayjs(date).format('DD MMMM YYYY');
-const openImportCategory = ref(false);
+const openImportAgenda = ref(false);
 
-const categoryBeingDeleted = ref(null);
-const deleteCategoryForm = useForm();
+const agendaBeingDeleted = ref(null);
+const deleteAgendaForm = useForm();
 
-const deleteCategory = () =>
-    deleteCategoryForm.delete(
-        route('admin.permit-categories.destroy', {
-            category: categoryBeingDeleted.value?.id,
+const deleteAgenda = () =>
+    deleteAgendaForm.delete(
+        route('admin.agenda.destroy', {
+            agenda: agendaBeingDeleted.value?.id,
         }),
         {
             preserveScroll: true,
             preserveState: true,
-            onSuccess: () => (categoryBeingDeleted.value = null),
+            onSuccess: () => (agendaBeingDeleted.value = null),
         }
     );
 </script>

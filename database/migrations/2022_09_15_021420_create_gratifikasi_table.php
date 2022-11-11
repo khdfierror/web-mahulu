@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('gratifikasi_jenis', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->string('nama')->nullable();
             $table->string('kode')->nullable();
             $table->timestamps();
@@ -23,7 +23,7 @@ return new class extends Migration
 
         Schema::create('gratifikasi_peristiwa', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->string('nama')->nullable();
             $table->string('kode')->nullable();
             $table->timestamps();
@@ -31,7 +31,7 @@ return new class extends Migration
 
         Schema::create('gratifikasi_pelapor', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->string('nama')->nullable();
             $table->string('nomor_identitas')->nullable(); // nip / nik
             $table->string('whatsapp')->nullable();
@@ -44,7 +44,7 @@ return new class extends Migration
 
         Schema::create('gratifikasi_penerima', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->foreignId('gratifikasi_jenis_id')->nullable()->cascadeOnDelete();
             $table->foreignId('gratifikasi_peristiwa_id')->nullable()->cascadeOnDelete();
             $table->foreignId('gratifikasi_pelapor_id')->nullable()->cascadeOnDelete();
@@ -60,7 +60,7 @@ return new class extends Migration
 
         Schema::create('gratifikasi_pemberi', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->string('nama')->nullable();
             $table->string('pekerjaan')->nullable();
             $table->string('jabatan')->nullable();
@@ -72,7 +72,7 @@ return new class extends Migration
 
         Schema::create('gratifikasi_kronologi', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullabe();
             $table->text('alasan')->nullable(); // alasan pemberian
             $table->text('kronologi')->nullable(); // Kronologi pemberian (runtutan kejadian penerimaan)
             $table->text('catatan')->nullable(); // Catatan tambahan (bila perlu)

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cagar_budaya', function (Blueprint $table) {
             $table->id();
-            $table->ulid('uuid')->nullable();
+            $table->ulid('ulid')->nullable();
             $table->string('name');
 
             $table->string('cp_name')->nullable();
@@ -26,14 +26,14 @@ return new class extends Migration
 
         Schema::create('permit_categories', function (Blueprint $table) {
             $table->id();
-            $table->ulid('uuid')->nullable();
+            $table->ulid('ulid')->nullable();
             $table->string('name');
             $table->timestamps();
         });
 
         Schema::create('permit_applicants', function (Blueprint $table) {
             $table->id();
-            $table->ulid('uuid')->nullable();
+            $table->ulid('ulid')->nullable();
             $table->string('name')->nullable();
             $table->string('job')->nullable(); // pekerjaan
             $table->string('agency')->nullable(); // instansi
@@ -44,7 +44,7 @@ return new class extends Migration
 
         Schema::create('services_permits', function (Blueprint $table) {
             $table->id();
-            $table->ulid('uuid')->nullable();
+            $table->ulid('ulid')->nullable();
             $table->foreignId('categories_id')->nullable()->cascadeOnDelete();
             $table->foreignId('cagar_budaya_id')->nullable()->cascadeOnDelete();
             $table->foreignId('permit_applicant_id')->nullable()->cascadeOnDelete();
@@ -58,7 +58,7 @@ return new class extends Migration
 
         Schema::create('services_reports', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->foreignId('categories_id')->nullable()->cascadeOnDelete();
             $table->foreignId('permit_applicant_id')->nullable()->cascadeOnDelete();
 
@@ -72,7 +72,7 @@ return new class extends Migration
 
         Schema::create('services_data_requests', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->foreignId('categories_id')->nullable()->cascadeOnDelete();
             $table->foreignId('cagar_budaya_id')->nullable()->cascadeOnDelete();
             $table->foreignId('permit_applicant_id')->nullable()->cascadeOnDelete();
@@ -83,7 +83,7 @@ return new class extends Migration
 
         Schema::create('services_cases', function (Blueprint $table) {
             $table->id();
-            $table->ulid();
+            $table->ulid('ulid')->nullable();
             $table->foreignId('categories_id')->nullable()->cascadeOnDelete(); // questionable, category list unknown, for now using permit categories latter will be change with the right table
             $table->foreignId('cagar_budaya_id')->nullable()->cascadeOnDelete();
             $table->foreignId('permit_applicant_id')->nullable()->cascadeOnDelete();

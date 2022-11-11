@@ -15,6 +15,7 @@ class Navigation
             // ...$this->sales($user),
             // ...$this->inventory($user),
             ...$this->blog($user),
+            ...$this->agenda($user),
             // ...$this->navigation($user),
             ...$this->survey($user),
             ...$this->services($user),
@@ -92,6 +93,8 @@ class Navigation
                 'icon' => 'authors',
                 'key' => 'blog.author',
             ],
+
+        
         ];
 
         foreach ($data as $item) {
@@ -112,6 +115,42 @@ class Navigation
 
         return $result;
     }
+
+    public function agenda(User $user)
+    {
+        $result = [];
+        $data = [
+            [
+                'type' => 'link',
+                'name' => 'Agenda',
+                'href' => route('admin.agenda.index'),
+                'icon' => 'agenda-icon',
+                'key' => 'agenda',
+            ],
+            
+
+        
+        ];
+
+        foreach ($data as $item) {
+            if ($user->can('dashboard.'.$item['key'].'.index') || true) {
+                $result[] = $item;
+            }
+        }
+
+        if (! empty($result)) {
+            $result = [
+                [
+                    'type' => 'label',
+                    'label' => 'Agenda',
+                ],
+                ...$result,
+            ];
+        }
+
+        return $result;
+    }
+    
 
     public function navigation(User $user)
     {

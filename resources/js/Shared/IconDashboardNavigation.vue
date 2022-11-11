@@ -45,6 +45,7 @@
     <GratifikasiPeristiwa v-else-if="name === 'gratifikasi-peristiwa'" />
     <GratifikasiJenis v-else-if="name === 'gratifikasi-jenis'" />
     <GratifikasiLaporan v-else-if="name === 'gratifikasi-laporan'" />
+    <AgendaIcon v-else-if="name === 'agenda-icon'" />
 </template>
 
 <script setup>
@@ -104,6 +105,8 @@ import WbsReport from '~icons/ri/alarm-warning-line';
 import GratifikasiPeristiwa from '~icons/heroicons-outline/star';
 import GratifikasiLaporan from '~icons/tabler/report-analytics';
 import GratifikasiJenis from '~icons/ri/list-settings-line';
+
+import AgendaIcon from '~icons/tabler/calendar-event';
 
 defineProps({
     name: String,

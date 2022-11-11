@@ -1,21 +1,21 @@
 <template>
     <AppLayout
-        :title="`${category?.id ? 'Edit Category' : 'Create Category'}`"
-        menu="permit-categories"
+        :title="`${agenda?.id ? 'Edit Agenda' : 'Create Agenda'}`"
+        menu="agenda"
     >
         <template #header>
             <div>
                 <Link
-                    :href="route('admin.permit-categories.index')"
+                    :href="route('admin.agenda.index')"
                     class="inline-flex items-center text-sm text-brand-secondary hover:text-brand-primary"
                 >
-                    <icon-heroicons-outline-chevron-left class="w-5 h-5 mr-3" />Permit Category
+                    <icon-heroicons-outline-chevron-left class="w-5 h-5 mr-3" />Agenda
                 </Link>
             </div>
             <div class="flex items-center">
                 <div class="flex-1">
                     <h2 class="text-2xl font-medium text-brand-dark dark:text-white">
-                        {{ category?.id ? category.title : 'Create Category' }}
+                        {{ agenda?.id ? agenda.title : 'Create Agenda' }}
                     </h2>
                 </div>
                 <div></div>
@@ -31,13 +31,13 @@
                         <div>
                             <div class="tracking-wider form-label">Created at</div>
                             <div class="text-sm text-brand-secondary">
-                                {{ category?.created_at?.string || '-' }}
+                                {{ agenda?.created_at?.string || '-' }}
                             </div>
                         </div>
                         <div>
                             <div class="tracking-wider form-label">Last modified at</div>
                             <div class="text-sm text-brand-secondary">
-                                {{ category?.updated_at?.string || '-' }}
+                                {{ agenda?.updated_at?.string || '-' }}
                             </div>
                         </div>
                     </div>
@@ -53,9 +53,9 @@
                         {{
                             form.processing
                                 ? 'Processing...'
-                                : category?.id
-                                ? 'Update Category'
-                                : 'Create Category'
+                                : agenda?.id
+                                ? 'Update Agenda'
+                                : 'Create Agenda'
                         }}
                     </ButtonPrimary>
                 </div>
@@ -65,10 +65,33 @@
             >
                 <div class="space-y-6">
                     <TextInput
-                        :error="form.errors.name"
-                        v-model="form.name"
-                        label="Category Name"
+                        :error="form.errors.title"
+                        v-model="form.title"
+                        :options="params.title"
+                        label="Judul Kegiatan"
                     />
+                   
+                    <DateInput
+                        :error="form.errors.date"
+                        v-model="form.date"
+                        placeholder="Tanggal Kegiatan"
+                        label="Tanggal Kegiatan"
+                    />
+                    <TextInput
+                        :error="form.errors.location"
+                        v-model="form.location"
+                        :options="params.location"
+                        label="Tempat"
+                        help="Misal: Hotel Aston Samarinda"
+                    />
+                    <TextInput
+                        :error="form.errors.participant"
+                        v-model="form.participant"
+                        :options="params.participant"
+                        label="Peserta"
+                        help="Dihadiri oleh"
+                    />
+
                 </div>
             </div>
         </div>
@@ -81,27 +104,35 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import ButtonPrimary from '@/Shared/ButtonPrimary.vue';
 
 import TextInput from '@/Shared/TextInput.vue';
-import TiptapEditor from '@/Shared/TiptapEditor.vue';
+import DateInput from '@/Shared/DateInput.vue';
+
+
 import { watch } from 'vue';
 
 const props = defineProps({
-    category: Object,
+    agenda: Object,
     params: [Object, Array],
 });
 
 const form = useForm({
-    name: props.category?.name || null,
+    title: props.agenda?.title || null,
+    date: props.agenda?.date || null,
+    location: props.agenda?.location || null,
+    participant: props.agenda?.participant || null,
 });
+
+const updateApplicant = (data) => (form.applicant = { ...data });
 
 const submit = () =>
     form
         .transform((data) => ({
             ...data,
-            _method: props.category?.id ? 'PUT' : 'POST',
+            file: data.file?.object,
+            _method: props.agenda?.id ? 'PUT' : 'POST',
         }))
         .post(
-            route(`admin.permit-categories.${props.category?.id ? 'update' : 'store'}`, {
-                category: props.category,
+            route(`admin.agenda.${props.agenda?.id ? 'update' : 'store'}`, {
+                agenda: props.agenda,
             })
         );
 </script>

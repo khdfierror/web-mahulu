@@ -35,6 +35,7 @@ module.exports = {
     },
 
     plugins: [
+        require("tailwindcss/nesting"),
         require('@tailwindcss/forms'), 
         require('@tailwindcss/typography')
     ],

@@ -23,7 +23,7 @@
                             'disabled:select-none',
                             error
                                 ? 'text-red-800 placeholder-red-400 border-red-500 focus:ring-red-500 focus:border-red-500 disabled:text-red-800/20'
-                                : 'border-brand-secondary/20 placeholder-brand-secondary focus:ring-brand-secondary focus:border-brand-secondary text-brand-dark disabled:text-brand-dark/20 dark:text-white/80 dark:disabled:text-white/40',
+                                : 'border-brand-secondary/20 placeholder-brand-secondary/50 focus:ring-brand-secondary focus:border-brand-secondary text-brand-dark disabled:text-brand-dark/20 dark:text-white/80 dark:disabled:text-white/40',
                             'sm:text-sm',
                             disabled ? 'cursor-not-allowed' : '',
                             inputClass,
