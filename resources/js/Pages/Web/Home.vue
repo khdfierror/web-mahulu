@@ -26,16 +26,16 @@ defineProps({
 
 <template>
     <WebLayout title="Home">
-        <div class="bg-brand-primary">
+        <div class="bg-brand-light">
             <Hero />
             <!-- <RunningText v-if="tickers" class="relative z-10 -mb-8" /> -->
             <About :about="about" />
             <Layanan class="relative z-10" />
-            <Warta v-if="warta?.length" :warta="warta" />
-            <Jendela v-if="jendela?.length" :jendela="jendela" class="relative z-10" />
-            <Peta :map_options="map_options" :map_markers="map_markers" />
-            <SocialMedia :facebook="facebook" class="relative z-10" />
-            <Survey class="relative z-10" v-if="survey" />
+            <!-- <Warta v-if="warta?.length" :warta="warta" />
+            <Jendela v-if="jendela?.length" :jendela="jendela" class="relative z-10" /> -->
+            <!-- <Peta :map_options="map_options" :map_markers="map_markers" /> -->
+            <SocialMedia class="relative z-10" />
+            <Survey class="relative z-10"/>
             <Footer class="relative z-10" />
         </div>
     </WebLayout>

@@ -59,7 +59,7 @@ colorScheme.value = 'light';
             <div class="w-full bg-white">
                 <RunningText class="" />
             </div>
-            <nav class="border-gray-100 bg-brand-primary">
+            <nav class="border-gray-100 bg-brand-light">
                 <!-- Primary Navigation Menu -->
                 <div class="px-12 mx-auto max-w-7xl sm:px-14 lg:px-8 2xl:px-0 text-brand-light">
                     <div class="flex justify-between w-full">

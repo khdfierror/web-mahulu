@@ -141,7 +141,7 @@ class AgendaController extends Controller
         /* @phpstan-ignore-next-line */
         return redirect()
             ->route('admin.agenda.index')
-            ->banner('Agenda Created');
+            ->banner('Agenda Updated');
  
     }
 

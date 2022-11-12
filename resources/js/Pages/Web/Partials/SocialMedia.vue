@@ -1,175 +1,38 @@
 <script setup>
-import TwitterWidgetsLoader from 'twitter-widgets';
-
-const settings = computed(() => usePage().props.value?.settings?.['social-media']);
-
-import InstagramIcon from '~icons/ri/instagram-fill';
-import YoutubeIcon from '~icons/ri/youtube-fill';
-import FacebookIcon from '~icons/ri/facebook-circle-fill';
-import TwitterIcon from '~icons/ri/twitter-fill';
-import Icon from '@/Shared/Icon.vue';
-
-const props = defineProps({
-    facebook: [Object, Array],
-});
-
-const twitterContainer = ref(null);
-const twitterLoaded = ref(false);
-const facebookUrl = ref(props.facebook?.url);
-
-const socialMedia = [
+const docs = [
     {
-        name: 'Instagram',
-        label: settings.value?.instagram.label,
-        // icon: InstagramIcon,
-        icon: 'instagram',
-        url: settings.value?.instagram?.link,
+        date: '30 Desember 2013',
+        image: '/images/books/01.png'
     },
     {
-        name: 'Facebook',
-        label: settings.value?.facebook?.label,
-        // icon: FacebookIcon,
-        icon: 'facebook',
-        url: settings.value?.facebook?.link,
+        date: '30 Desember 2013',
+        image: '/images/books/02.png'
     },
     {
-        name: 'Twitter',
-        label: settings.value?.twitter?.label,
-        // icon: TwitterIcon,
-        icon: 'twitter',
-        url: settings.value?.twitter?.link,
+        date: '30 Desember 2013',
+        image: '/images/books/03.png'
     },
     {
-        name: 'Youtube',
-        label: settings.value?.youtube?.label,
-        // icon: YoutubeIcon,
-        icon: 'youtube',
-        url: settings.value?.youtube?.link,
+        date: '30 Desember 2013',
+        image: '/images/books/01.png'
     },
-];
-
-const initTwitterTimeline = (screenName) =>
-    TwitterWidgetsLoader.load(function (err, twttr) {
-        if (err || !screenName) {
-            //do some graceful degradation / fallback
-            return;
-        }
-
-        twttr.widgets
-            .createTimeline(
-                {
-                    sourceType: 'profile',
-                    screenName,
-                },
-                twitterContainer.value,
-                {
-                    chrome: 'noheader nofooter noborders noscrollbar transparent',
-                    tweetLimit: 5,
-                    borderColor: '#FFFFFF',
-                    dnt: true,
-                }
-            )
-            .then(function (el) {
-                twitterLoaded.value = true;
-            });
-    });
-
-onMounted(() => {
-    initTwitterTimeline(settings.value?.twitter?.label);
-});
+]
 </script>
-
 <template>
-    <div class="px-12 bg-brand-blue sm:px-14 lg:px-16 relative">
-        <svg
-            class="absolute top-0 left-0 aspect-square z-0"
-            width="384"
-            height="368"
-            viewBox="0 0 384 368"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M0 0H120V120H0V0ZM0 136H80V216H0V136ZM40 328H0V368H40V328ZM308 0H348V40H308V0ZM384 0H364V20H384V0ZM96 152H196V252H96V152ZM196 0H136V60H196V0ZM212 96H272V156H212V96ZM220 8H284V72H220V8ZM212 80V0H292V80H212ZM8 240H72V304H8V240ZM0 312V232H80V312H0ZM188 84H144V128H188V84ZM136 76V136H196V76H136Z"
-                fill="#C9EAFF"
-            />
-        </svg>
-        <svg
-            class="absolute -bottom-24 left-16 aspect-square z-0"
-            width="184"
-            height="184"
-            viewBox="0 0 184 184"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M0 0H4V4H0V0ZM12 0H16V4H12V0ZM16 12H12V16H16V12ZM0 12H4V16H0V12ZM0 24H4V28H0V24ZM12 24H16V28H12V24ZM16 36H12V40H16V36ZM0 36H4V40H0V36ZM28 0H24V4H28V0ZM40 0H36V4H40V0ZM36 12H40V16H36V12ZM28 12H24V16H28V12ZM24 24H28V28H24V24ZM36 24H40V28H36V24ZM40 36H36V40H40V36ZM24 36H28V40H24V36ZM0 48H4V52H0V48ZM12 48H16V52H12V48ZM16 60H12V64H16V60ZM0 60H4V64H0V60ZM0 72H4V76H0V72ZM12 72H16V76H12V72ZM16 84H12V88H16V84ZM0 84H4V88H0V84ZM28 48H24V52H28V48ZM40 48H36V52H40V48ZM36 60H40V64H36V60ZM28 60H24V64H28V60ZM24 72H28V76H24V72ZM36 72H40V76H36V72ZM40 84H36V88H40V84ZM24 84H28V88H24V84ZM52 0H48V4H52V0ZM64 0H60V4H64V0ZM60 12H64V16H60V12ZM52 12H48V16H52V12ZM52 24H48V28H52V24ZM64 24H60V28H64V24ZM60 36H64V40H60V36ZM52 36H48V40H52V36ZM72 0H76V4H72V0ZM84 0H88V4H84V0ZM88 12H84V16H88V12ZM72 12H76V16H72V12ZM76 24H72V28H76V24ZM88 24H84V28H88V24ZM84 36H88V40H84V36ZM76 36H72V40H76V36ZM48 48H52V52H48V48ZM60 48H64V52H60V48ZM64 60H60V64H64V60ZM48 60H52V64H48V60ZM48 72H52V76H48V72ZM60 72H64V76H60V72ZM64 84H60V88H64V84ZM48 84H52V88H48V84ZM76 48H72V52H76V48ZM88 48H84V52H88V48ZM84 60H88V64H84V60ZM76 60H72V64H76V60ZM72 72H76V76H72V72ZM84 72H88V76H84V72ZM88 84H84V88H88V84ZM72 84H76V88H72V84ZM0 96H4V100H0V96ZM12 96H16V100H12V96ZM16 108H12V112H16V108ZM0 108H4V112H0V108ZM0 120H4V124H0V120ZM12 120H16V124H12V120ZM16 132H12V136H16V132ZM0 132H4V136H0V132ZM28 96H24V100H28V96ZM40 96H36V100H40V96ZM36 108H40V112H36V108ZM28 108H24V112H28V108ZM24 120H28V124H24V120ZM36 120H40V124H36V120ZM40 132H36V136H40V132ZM24 132H28V136H24V132ZM0 144H4V148H0V144ZM12 144H16V148H12V144ZM16 156H12V160H16V156ZM0 156H4V160H0V156ZM0 168H4V172H0V168ZM12 168H16V172H12V168ZM16 180H12V184H16V180ZM0 180H4V184H0V180ZM28 144H24V148H28V144ZM40 144H36V148H40V144ZM36 156H40V160H36V156ZM28 156H24V160H28V156ZM24 168H28V172H24V168ZM36 168H40V172H36V168ZM40 180H36V184H40V180ZM24 180H28V184H24V180ZM52 96H48V100H52V96ZM64 96H60V100H64V96ZM60 108H64V112H60V108ZM52 108H48V112H52V108ZM52 120H48V124H52V120ZM64 120H60V124H64V120ZM60 132H64V136H60V132ZM52 132H48V136H52V132ZM72 96H76V100H72V96ZM84 96H88V100H84V96ZM88 108H84V112H88V108ZM72 108H76V112H72V108ZM76 120H72V124H76V120ZM88 120H84V124H88V120ZM84 132H88V136H84V132ZM76 132H72V136H76V132ZM48 144H52V148H48V144ZM60 144H64V148H60V144ZM64 156H60V160H64V156ZM48 156H52V160H48V156ZM48 168H52V172H48V168ZM60 168H64V172H60V168ZM64 180H60V184H64V180ZM48 180H52V184H48V180ZM76 144H72V148H76V144ZM88 144H84V148H88V144ZM84 156H88V160H84V156ZM76 156H72V160H76V156ZM72 168H76V172H72V168ZM84 168H88V172H84V168ZM88 180H84V184H88V180ZM72 180H76V184H72V180ZM100 0H96V4H100V0ZM112 0H108V4H112V0ZM108 12H112V16H108V12ZM100 12H96V16H100V12ZM100 24H96V28H100V24ZM112 24H108V28H112V24ZM108 36H112V40H108V36ZM100 36H96V40H100V36ZM120 0H124V4H120V0ZM132 0H136V4H132V0ZM136 12H132V16H136V12ZM120 12H124V16H120V12ZM124 24H120V28H124V24ZM136 24H132V28H136V24ZM132 36H136V40H132V36ZM124 36H120V40H124V36ZM100 48H96V52H100V48ZM112 48H108V52H112V48ZM108 60H112V64H108V60ZM100 60H96V64H100V60ZM100 72H96V76H100V72ZM112 72H108V76H112V72ZM108 84H112V88H108V84ZM100 84H96V88H100V84ZM120 48H124V52H120V48ZM132 48H136V52H132V48ZM136 60H132V64H136V60ZM120 60H124V64H120V60ZM124 72H120V76H124V72ZM136 72H132V76H136V72ZM132 84H136V88H132V84ZM124 84H120V88H124V84ZM144 0H148V4H144V0ZM156 0H160V4H156V0ZM160 12H156V16H160V12ZM144 12H148V16H144V12ZM144 24H148V28H144V24ZM156 24H160V28H156V24ZM160 36H156V40H160V36ZM144 36H148V40H144V36ZM172 0H168V4H172V0ZM184 0H180V4H184V0ZM180 12H184V16H180V12ZM172 12H168V16H172V12ZM168 24H172V28H168V24ZM180 24H184V28H180V24ZM184 36H180V40H184V36ZM168 36H172V40H168V36ZM148 48H144V52H148V48ZM160 48H156V52H160V48ZM156 60H160V64H156V60ZM148 60H144V64H148V60ZM148 72H144V76H148V72ZM160 72H156V76H160V72ZM156 84H160V88H156V84ZM148 84H144V88H148V84ZM168 48H172V52H168V48ZM180 48H184V52H180V48ZM184 60H180V64H184V60ZM168 60H172V64H168V60ZM172 72H168V76H172V72ZM184 72H180V76H184V72ZM180 84H184V88H180V84ZM172 84H168V88H172V84ZM96 96H100V100H96V96ZM108 96H112V100H108V96ZM112 108H108V112H112V108ZM96 108H100V112H96V108ZM96 120H100V124H96V120ZM108 120H112V124H108V120ZM112 132H108V136H112V132ZM96 132H100V136H96V132ZM124 96H120V100H124V96ZM136 96H132V100H136V96ZM132 108H136V112H132V108ZM124 108H120V112H124V108ZM120 120H124V124H120V120ZM132 120H136V124H132V120ZM136 132H132V136H136V132ZM120 132H124V136H120V132ZM96 144H100V148H96V144ZM108 144H112V148H108V144ZM112 156H108V160H112V156ZM96 156H100V160H96V156ZM96 168H100V172H96V168ZM108 168H112V172H108V168ZM112 180H108V184H112V180ZM96 180H100V184H96V180ZM124 144H120V148H124V144ZM136 144H132V148H136V144ZM132 156H136V160H132V156ZM124 156H120V160H124V156ZM120 168H124V172H120V168ZM132 168H136V172H132V168ZM136 180H132V184H136V180ZM120 180H124V184H120V180ZM148 96H144V100H148V96ZM160 96H156V100H160V96ZM156 108H160V112H156V108ZM148 108H144V112H148V108ZM148 120H144V124H148V120ZM160 120H156V124H160V120ZM156 132H160V136H156V132ZM148 132H144V136H148V132ZM168 96H172V100H168V96ZM180 96H184V100H180V96ZM184 108H180V112H184V108ZM168 108H172V112H168V108ZM172 120H168V124H172V120ZM184 120H180V124H184V120ZM180 132H184V136H180V132ZM172 132H168V136H172V132ZM144 144H148V148H144V144ZM156 144H160V148H156V144ZM160 156H156V160H160V156ZM144 156H148V160H144V156ZM144 168H148V172H144V168ZM156 168H160V172H156V168ZM160 180H156V184H160V180ZM144 180H148V184H144V180ZM172 144H168V148H172V144ZM184 144H180V148H184V144ZM180 156H184V160H180V156ZM172 156H168V160H172V156ZM168 168H172V172H168V168ZM180 168H184V172H180V168ZM184 180H180V184H184V180ZM168 180H172V184H168V180Z"
-                fill="#B5D3E6"
-            />
-        </svg>
-
-        <div
-            class="grid max-w-6xl mx-auto py-28 md:grid-cols-3 md:gap-16 relative z-10 text-brand-dark"
-        >
-            <div>
-                <h3 class="text-4xl">Sosial Media</h3>
-                <ul class="mt-10 space-y-5">
-                    <li v-for="item in socialMedia">
-                        <a
-                            :href="item.url"
-                            target="_blank"
-                            class="inline-flex items-center transition-all hover:opacity-80"
-                        >
-                            <!-- <component :is="item.icon" class="mr-3 w-9 h-9 text-brand-primary" /> -->
-                            <Icon :name="item.icon" class="mr-3 w-9 h-9 text-brand-primary" />
-                            <span class="font-bold">
-                                {{ item.label }}
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="flex">
-                <div class="relative aspect-[370/470] w-full">
-                    <div class="relative z-10 flex w-full h-full bg-white">
-                        <!-- src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBPCBKALIMANTAN&tabs=timeline&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1659706460851480" -->
-                        <iframe
-                            :src="facebookUrl"
-                            style="border: none; overflow: hidden"
-                            class="m-auto w-full h-full"
-                            scrolling="no"
-                            frameborder="0"
-                            allowfullscreen="true"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                        ></iframe>
-                    </div>
-                    <div
-                        class="absolute z-0 w-full h-full border border-brand-gray -bottom-6 -right-6"
-                    ></div>
-                </div>
-            </div>
-            <div class="flex">
-                <div class="relative aspect-[370/470] w-full">
-                    <div class="relative z-10 flex w-full h-full overflow-y-auto bg-white">
-                        <div class="flex-1 -m-1">
-                            <div ref="twitterContainer" class="object-cover w-full h-full" />
-                        </div>
-                        <div
-                            v-if="!twitterLoaded"
-                            class="absolute inset-0 flex items-center justify-center text-4xl text-[#D2D6DC]"
-                        >
-                            twitter
-                        </div>
-                    </div>
-                    <div
-                        class="absolute z-0 w-full h-full border border-brand-gray -bottom-6 -right-6"
-                    ></div>
+    <div class="relative max-w-screen-2xl py-2 pb-10 mx-auto xl:px-16">
+        <div class="w-full flex justify-between py-6 mb-4 px-5">
+            <h1 class="text-2xl font-semibold">Dokumen</h1>
+            <button type="button" border class="border-gray-100 px-4 py-2 rounded-xl hover:bg-gray-100">
+                Lihat Semua
+            </button>
+        </div>
+        <div class="w-full px-5">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 xl:gap-10">
+                <div class="w-full py-14 bg-green-100 rounded-xl" v-for="item in docs" :key="item.key">
+                    <img :src="item.image" alt="" class="mx-auto shadow-md shadow-green-100">
                 </div>
             </div>
         </div>
     </div>
+
 </template>

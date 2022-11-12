@@ -1,95 +1,35 @@
+<script setup>
+
+</script>
 <template>
-    <div class="flex max-w-6xl py-20 mx-auto">
-        <div class="flex-1 py-10 space-y-10 text-brand-light">
-            <h1 class="md:text-5xl font-semibold max-w-md md:leading-[3.75rem">
-                Balai Pelestarian Cagar Budaya Provinsi Kalimantan Timur
-            </h1>
-            <div class="max-w-sm">
-                Wilayah kerja Provinsi Kalimantan, Kalimantan Utara, Kalimantan Selatan, Kalimantan
-                Tengah dan Kalimantan Barat.
+    <img src="/images/pattern_header.svg" alt="" class="absolute w-full top-40 md:top-42 lg:top-32 xl:top-32 xl:w-9/12">
+    <div class="screen-header bg-brand-light">
+        <div class="grid grid-cols-1 content-center md:grid-cols-2 xl:px-20 gap-10">
+            <div class="relative text-center md:text-left md:mt-10">
+                <div class="flex flex-col px-5 md:px-7 xl:px-0">
+                    <h3 class="text-md font-semibold text-gray-500 lg:text-xl xl:text-2xl">Selamat Datang</h3>
+                    <h1 class="text-lg font-semibold mt-4 leading-relaxed lg:text-2xl lg:leading-relaxed xl:text-4xl
+                        xl:leading-normal">
+                        Badan Perencanaan Pembangunan,
+                        Penelitian dan Pengembangan Daerah
+                        Kabupaten Mahakam Ulu
+                    </h1>
+                </div>
             </div>
-            <div>
-                <form class="relative flex max-w-xs">
-                    <input
-                        :class="[
-                            'px-4 py-3 border-y border-l placeholder-[#D2D6DC] border-brand-secondary text-brand-dark flex-1',
-                            'focus:ring-0 focus:outline-none',
-                        ]"
-                        placeholder="Masukan Cagar Budaya"
-                    />
-                    <button
-                        type="submit"
-                        class="px-6 py-3 font-medium text-white transition-all bg-brand-dark hover:bg-brand-secondary focus:bg-brand-secondary/90"
-                    >
-                        Cari
-                    </button>
-                </form>
+            <div class="relative px-5 order-first md:hidden">
+                <img src="/images/mobile_foto_sekda.svg" class="block md:hidden">
             </div>
-        </div>
-        <div>
-            <div class="relative max-w-md aspect-square">
-                <Transition v-for="(item, index) in slider" v-if="slider.length">
-                    <Link :href="item.url">
-                        <div class="min-w-[28rem]">
-                            <img
-                                v-if="show[index]"
-                                :id="item.id"
-                                :src="item?.image?.url"
-                                alt="Promo"
-                                class="absolute z-10 object-cover w-full h-full"
-                            />
-                        </div>
-                    </Link>
-                </Transition>
-                <img
-                    v-else
-                    :src="`/img/slider-1.png`"
-                    alt="Promo"
-                    class="relative z-10 object-cover w-full h-full"
-                />
-                <div
-                    class="absolute z-0 w-full h-full border border-brand-gray -bottom-6 -right-6"
-                ></div>
-            </div>
+            <img src="/images/fotosekda.svg"
+                class="hidden z-0 w-8/12 absolute right-0 md:block lg:w-8/12 lg:top-22 lg:right-5  xl:w-7/12">
         </div>
     </div>
 </template>
 
-<script setup>
-const slider = computed(() => usePage().props.value?.slider);
-const show = ref([]);
-const interval = ref(null);
-
-const updateTicker = () => {
-    const removed = show.value.pop();
-    show.value.unshift(removed);
-};
-
-const initTicker = () => {
-    if (slider.value) {
-        show.value = [];
-        slider.value?.forEach((item, index) => {
-            show.value.push(index === 0);
-        });
-        interval.value = setInterval(updateTicker, 5000);
-    }
-};
-
-watch(
-    () => slider.value,
-    () => initTicker()
-);
-onMounted(() => initTicker());
-onBeforeUnmount(() => clearInterval(interval.value));
-</script>
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 1s;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
+.screen-header {
+    min-height: 60vh;
 }
 </style>
+
+
+<!-- relative max-w-screen-2xl mx-auto flex flex-wrap content-center xlp:pb-40 -->
