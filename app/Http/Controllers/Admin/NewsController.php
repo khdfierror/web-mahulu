@@ -113,9 +113,9 @@ class NewsController extends Controller
             'location' => ['required'],
         ]);
 
-        // if ($request->hasFile('image')) {
-        //         $news->updateImage($request->file('image'));
-        //     }
+        if ($request->hasFile('image')) {
+                $news->updateImage($request->file('image'));
+            }
 
         $news = News::create($input);
 
@@ -153,6 +153,10 @@ class NewsController extends Controller
         ]);
 
          $news->update($input);
+
+         if ($request->hasFile('image')) {
+                $news->updateImage($request->file('image'));
+            }
 
          return redirect()
             ->route('admin.news.index')

@@ -47,6 +47,8 @@
     <GratifikasiLaporan v-else-if="name === 'gratifikasi-laporan'" />
     <AgendaIcon v-else-if="name === 'agenda-icon'" />
     <BeritaIcon v-else-if="name === 'berita-icon'" />
+    <AplIcon v-else-if="name === 'apl-icon'" />
+    <DocumentIcon v-else-if="name === 'document-icon'" />
 </template>
 
 <script setup>
@@ -110,6 +112,10 @@ import GratifikasiJenis from '~icons/ri/list-settings-line';
 import AgendaIcon from '~icons/tabler/calendar-event';
 
 import BeritaIcon from '~icons/tabler/article';
+
+import AplIcon from '~icons/tabler/apps';
+
+import DocumentIcon from '~icons/tabler/files';
 
 defineProps({
     name: String,

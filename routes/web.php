@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\PermitController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AgendaController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\AplikasiController;
+use App\Http\Controllers\Admin\DocumentController;
 use App\Http\Controllers\Admin\Wbs\KategoriController;
 use App\Http\Controllers\Admin\Wbs\LaporanController;
 use App\Http\Controllers\AskOtpController;
@@ -293,5 +295,29 @@ Route::middleware([
             Route::get('/{news:ulid}/edit', 'edit')->name('edit')->withTrashed();
             Route::put('/{news:ulid}', 'update')->name('update');
             Route::delete('/{news:ulid}', 'destroy')->name('destroy')->withTrashed();
+        });
+
+    Route::controller(AplikasiController::class)
+        ->prefix('/admin/aplikasi')
+        ->name('admin.aplikasi.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index')->middleware(['remember']);
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{aplikasi:ulid}/edit', 'edit')->name('edit')->withTrashed();
+            Route::put('/{aplikasi:ulid}', 'update')->name('update');
+            Route::delete('/{aplikasi:ulid}', 'destroy')->name('destroy')->withTrashed();
+        });
+
+    Route::controller(DocumentController::class)
+        ->prefix('/admin/document')
+        ->name('admin.document.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index')->middleware(['remember']);
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{document:ulid}/edit', 'edit')->name('edit')->withTrashed();
+            Route::put('/{document:ulid}', 'update')->name('update');
+            Route::delete('/{document:ulid}', 'destroy')->name('destroy')->withTrashed();
         });
 });

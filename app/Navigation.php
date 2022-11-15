@@ -15,8 +15,7 @@ class Navigation
             // ...$this->sales($user),
             // ...$this->inventory($user),
             ...$this->blog($user),
-            ...$this->agenda($user),
-            ...$this->berita($user),
+            ...$this->info($user),
             // ...$this->navigation($user),
             ...$this->survey($user),
             ...$this->services($user),
@@ -117,10 +116,13 @@ class Navigation
         return $result;
     }
 
-    public function agenda(User $user)
+    
+    
+    public function info(User $user)
     {
         $result = [];
         $data = [
+
             [
                 'type' => 'link',
                 'name' => 'Agenda',
@@ -128,40 +130,29 @@ class Navigation
                 'icon' => 'agenda-icon',
                 'key' => 'agenda',
             ],
-            
 
-        
-        ];
-
-        foreach ($data as $item) {
-            if ($user->can('dashboard.'.$item['key'].'.index') || true) {
-                $result[] = $item;
-            }
-        }
-
-        if (! empty($result)) {
-            $result = [
-                [
-                    'type' => 'label',
-                    'label' => 'Agenda',
-                ],
-                ...$result,
-            ];
-        }
-
-        return $result;
-    }
-    
-    public function berita(User $user)
-    {
-        $result = [];
-        $data = [
             [
                 'type' => 'link',
                 'name' => 'Berita',
                 'href' => route('admin.news.index'),
                 'icon' => 'berita-icon',
                 'key' => 'news',
+            ],
+
+            [
+                'type' => 'link',
+                'name' => 'Aplikasi',
+                'href' => route('admin.aplikasi.index'),
+                'icon' => 'apl-icon',
+                'key' => 'aplikasi',
+            ],
+
+            [
+                'type' => 'link',
+                'name' => 'Dokumen',
+                'href' => route('admin.document.index'),
+                'icon' => 'document-icon',
+                'key' => '#',
             ],
             
 
@@ -178,7 +169,7 @@ class Navigation
             $result = [
                 [
                     'type' => 'label',
-                    'label' => 'Berita',
+                    'label' => 'Info',
                 ],
                 ...$result,
             ];
@@ -186,7 +177,6 @@ class Navigation
 
         return $result;
     }
-    
 
     public function navigation(User $user)
     {
