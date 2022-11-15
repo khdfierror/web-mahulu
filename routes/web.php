@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PermitCategoriesController;
 use App\Http\Controllers\Admin\PermitController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AgendaController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\Wbs\KategoriController;
 use App\Http\Controllers\Admin\Wbs\LaporanController;
 use App\Http\Controllers\AskOtpController;
@@ -280,5 +281,17 @@ Route::middleware([
             Route::get('/{agenda:ulid}/edit', 'edit')->name('edit')->withTrashed();
             Route::put('/{agenda:ulid}', 'update')->name('update');
             Route::delete('/{agenda:ulid}', 'destroy')->name('destroy')->withTrashed();
+        });
+
+    Route::controller(NewsController::class)
+        ->prefix('/admin/news')
+        ->name('admin.news.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index')->middleware(['remember']);
+            Route::get('/create', 'create')->name('create');
+            Route::post('/', 'store')->name('store');
+            Route::get('/{news:ulid}/edit', 'edit')->name('edit')->withTrashed();
+            Route::put('/{news:ulid}', 'update')->name('update');
+            Route::delete('/{news:ulid}', 'destroy')->name('destroy')->withTrashed();
         });
 });

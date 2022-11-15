@@ -328,7 +328,7 @@ const logout = () => {
 
         <Banner />
 
-        <div class="bg-brand-light py-10">
+        <div class="py-10">
             <div
                 class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8"
             >
@@ -381,8 +381,7 @@ const logout = () => {
                         <slot />
                         <div class="px-4 mt-8 sm:px-0">
                             <div class="flex items-center text-xs text-brand-secondary">
-                                &copy; 2022 Balai Pelestarian Cagar Budaya Kalimantan. All Rights
-                                Reserved.
+                                &copy; Copyright 2017 - 2022, Pemerintah Kabupaten Mahakam Ulu.
                             </div>
                         </div>
                     </div>

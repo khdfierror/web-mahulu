@@ -1,7 +1,7 @@
 <template>
     <div class="bg-brand-light relative max-w-screen-2xl py-2 mx-auto md:mt-10 md:px-6 lg:px-6 xl:px-18">
         <div class="w-full flex">
-            <div class="bg-brand-primary py-4 px-5 text-white md:py-3 lg:text-lg lg:py-3 md:rounded-tl-2xl md:rounded-bl-2xl
+            <div class="bg-brand-secondary py-4 px-5 text-white md:py-3 lg:text-lg lg:py-3 md:rounded-tl-2xl md:rounded-bl-2xl
                 xl:px-14">
                 <p class="mt-1">Sekilas info</p>
             </div>

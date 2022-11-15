@@ -121,7 +121,7 @@ const form = useForm({
     participant: props.agenda?.participant || null,
 });
 
-const updateApplicant = (data) => (form.applicant = { ...data });
+
 
 const submit = () =>
     form

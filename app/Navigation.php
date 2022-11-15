@@ -16,6 +16,7 @@ class Navigation
             // ...$this->inventory($user),
             ...$this->blog($user),
             ...$this->agenda($user),
+            ...$this->berita($user),
             // ...$this->navigation($user),
             ...$this->survey($user),
             ...$this->services($user),
@@ -143,6 +144,41 @@ class Navigation
                 [
                     'type' => 'label',
                     'label' => 'Agenda',
+                ],
+                ...$result,
+            ];
+        }
+
+        return $result;
+    }
+    
+    public function berita(User $user)
+    {
+        $result = [];
+        $data = [
+            [
+                'type' => 'link',
+                'name' => 'Berita',
+                'href' => route('admin.news.index'),
+                'icon' => 'berita-icon',
+                'key' => 'news',
+            ],
+            
+
+        
+        ];
+
+        foreach ($data as $item) {
+            if ($user->can('dashboard.'.$item['key'].'.index') || true) {
+                $result[] = $item;
+            }
+        }
+
+        if (! empty($result)) {
+            $result = [
+                [
+                    'type' => 'label',
+                    'label' => 'Berita',
                 ],
                 ...$result,
             ];

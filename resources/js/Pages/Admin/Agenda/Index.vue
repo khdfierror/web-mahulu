@@ -198,7 +198,7 @@
                                             })
                                         "
                                         :delete-link="!item.deleted_at"
-                                        @delete="() => (postBeingDeleted = item)"
+                                        @delete="() => (agendaBeingDeleted = item)"
                                         :restore-link="
                                             item.deleted_at
                                                 ? route('agenda.restore', {
