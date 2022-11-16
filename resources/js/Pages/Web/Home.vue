@@ -23,6 +23,7 @@ defineProps({
     map_markers: [Object, Array],
     slider: [Object, Array],
     about: [Object, Array],
+    news: [Object, Array],
 });
 </script>
 
@@ -32,7 +33,7 @@ defineProps({
             <Hero />
             <!-- <RunningText v-if="tickers" class="relative z-10 -mb-8" /> -->
             <Info :info="info" />
-            <Berita class="my-10" />
+            <Berita :news="news" class="my-10" />
             <!-- <Warta v-if="warta?.length" :warta="warta" />
             <Jendela v-if="jendela?.length" :jendela="jendela" class="relative z-10" /> -->
             <!-- <Peta :map_options="map_options" :map_markers="map_markers" /> -->

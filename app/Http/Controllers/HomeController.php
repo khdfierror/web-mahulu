@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\CagarBudaya;
+use App\Models\News;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Kedeka\InertiaBlog\Models\Post;
 use Kedeka\InertiaSetting\Facades\Setting;
 use Kedeka\InertiaSlider\Model as Slider;
 use Kedeka\InertiaSurvey\Survey;
+
 
 class HomeController extends Controller
 {
@@ -45,7 +47,7 @@ class HomeController extends Controller
 
         $slider = Slider::orderBy('order')->get()->transform(fn ($item) => [
             'order' => $item->order,
-            'title' => $item->title,
+            'title' => $item->title,  
             'description' => $item->description,
             'link' => $item->link,
             'image' => value(fn ($image) => $image ? [
@@ -55,6 +57,23 @@ class HomeController extends Controller
                 'url' => $image->glide_url,
             ] : null, $item?->image?->file),
         ]);
+        
+        $news = News::latest()
+        ->whereNotNull('updated_at')
+        ->take(4)
+        ->get()->transform(fn ($item) => [
+            'id' => $item->ulid,
+            'title' => $item->title,
+            'image' => $item->image?->file?->glide_url,
+            'content' => Str::words($item->content, 50, ' ...'),
+            'date' => $item->date,
+            'location' => $item->location,
+            'updated_at' => $item->updated_at,
+        ]);
+
+
+
+
 
         return Inertia::render('Web/Home', [
             'survey' => $survey,
@@ -69,6 +88,7 @@ class HomeController extends Controller
             'map_options' => $map_options,
             'map_markers' => $map_markers,
             'slider' => $slider,
+            'news' => $news,
             'about' => [
                 'title' => data_get($about, 'title'),
                 'description' => data_get($about, 'description'),

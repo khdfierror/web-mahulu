@@ -95,7 +95,7 @@ class PostController extends Controller
             'params' => [
                 // 'authors' => $authors,
                 // 'categories' => $categories,
-                // 'tags' => $tags,
+                // 'tags' => $tags, 
             ],
         ]);
     }

@@ -26,6 +26,7 @@ use App\Http\Controllers\Web\PermohonanController;
 use App\Http\Controllers\Web\PostController;
 use App\Http\Controllers\Web\TemuanController;
 use App\Http\Controllers\Web\WbsController;
+use App\Http\Controllers\Web\BeritaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -53,6 +54,14 @@ Route::name('web.')->group(function () {
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{post:ulid}/show', 'show')->name('show');
+    });
+
+    Route::controller(BeritaController::class)
+    ->prefix('/berita')
+    ->name('berita.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{berita:ulid}/show', 'show')->name('show');
     });
 
     // Layanan

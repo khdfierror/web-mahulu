@@ -112,12 +112,13 @@ class NewsController extends Controller
             'date' => ['required'],
             'location' => ['required'],
         ]);
+        
+        $news = News::create($input);
 
         if ($request->hasFile('image')) {
                 $news->updateImage($request->file('image'));
             }
 
-        $news = News::create($input);
 
         /* @phpstan-ignore-next-line */
         return redirect()

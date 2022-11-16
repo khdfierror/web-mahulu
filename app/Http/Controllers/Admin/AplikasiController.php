@@ -103,12 +103,13 @@ class AplikasiController extends Controller
             'image' => ['required', 'file', 'max:2040'],
             'link' => ['required'],
         ]);
-
+        
+        $aplikasi = Aplikasi::create($input);
+        
         if ($request->hasFile('image')) {
                 $aplikasi->updateImage($request->file('image'));
             }
 
-        $aplikasi = Aplikasi::create($input);
 
         /* @phpstan-ignore-next-line */
         return redirect()
